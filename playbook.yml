@@ -1,0 +1,8 @@
+---
+hosts: piwall
+become: yes
+tasks:
+  - name: download and install package pwlibs1_1.1
+    apt: deb=http://dl.piwall.co.uk/pwlibs1_1.1_armhf.deb
+  - name: download and install package pwomxplayer
+    apt: deb=http://dl.piwall.co.uk/pwomxplayer_20130815_armhf.deb
