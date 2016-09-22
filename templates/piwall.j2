@@ -1,0 +1,47 @@
+# wall definition for 2x2 screens with bezel compensation
+[4bez_wall]
+width=3840
+height=2400
+x=0
+y=0
+ 
+
+# corresponding tile definitions
+[4bez_1]
+wall=4bez_wall
+width=1920
+height=1200
+x=0
+y=0
+ 
+
+[4bez_2]
+wall=4bez_wall
+width=1920
+height=1200
+x=1920
+y=0
+ 
+
+[4bez_3]
+wall=4bez_wall
+width=1920
+height=1200
+x=0
+y=1200
+ 
+
+[4bez_4]
+wall=4bez_wall
+width=1920
+height=1200
+x=1920
+y=1200
+ 
+
+# config
+[4bez]
+pi4=4bez_1
+pi5=4bez_2
+pi6=4bez_3
+pi7=4bez_4
