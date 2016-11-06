@@ -1,0 +1,13 @@
+---
+- hosts: piwall
+  tasks:
+  - name: install synergy-package
+    apt: name=synergy state=present
+  - name: create synergy-config
+    template: src=templates/synergy.j2 dest=/home/pi/.synergy.conf owner=pi group=pi mode=0644
+  - name: start server
+    raw: synergys
+    when: synergy == "server"
+  - name: start clients
+    raw: synergyc {{synergy}}
+    when: synergy != "server"
