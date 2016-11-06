@@ -1,0 +1,29 @@
+#  piwall synergy configuration file
+#  2x2 desktops
+#  -------------
+#  | pi6 | pi7 |
+#  -------------
+#  | pi5 | pi4 |
+#  -------------
+
+section: screens
+        pi4:
+        pi5:
+        pi6:
+        pi7:
+end
+
+section: links
+        pi4:
+                left  = pi5
+                up    = pi7
+        pi5:    
+                right = pi4
+                up    = pi6
+        pi6     
+                right = pi7
+                down  = pi5
+        pi7     
+                left  = pi6
+                down  = pi4
+end
