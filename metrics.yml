@@ -1,0 +1,10 @@
+---
+## playbook installs metricbeat
+##
+- hosts: pis
+  become: true
+  tasks:
+    - get_url: url=https://beats-nightlies.s3.amazonaws.com/jenkins/metricbeat/579-f16fa5dbb6240daa4c9e49337e9d78518d71614b/metricbeat-linux-arm dest=/usr/bin/metricbeat mode=u+rwx
+    - lineinfile: dest=/etc/hosts regexp='^192\.168\.0\.12' line='192.168.0.12 mbp2'
+    - template: src=templates/metricbeat.j2 dest=/etc/metricbeat.yml
+    - raw: /usr/bin/metricbeat -c /etc/metricbeat.yml &
