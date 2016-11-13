@@ -8,6 +8,15 @@
   - name: start server
     raw: synergys
     when: synergy == "server"
-  - name: start clients
-    raw: synergyc {{synergy}}
+  - name: install supervisor-package
+    apt: name=supervisor state=present
+    when: synergy != "server"
+  - name: create supervisorconf
+    template: src=templates/synergyc.j2 dest=/etc/supervisor/conf.d/synergyc.conf
+    when: synergy != "server"
+  - name: reread supervisor
+    raw: supervisorctl reread
+    when: synergy != "server"
+  - name: update supervisor
+    raw: supervisorctl update
     when: synergy != "server"
