@@ -10,5 +10,7 @@
       template: src=templates/piwall.j2 dest=/home/pi/.piwall owner=pi group=pi mode=0644
     - name: create pitile-config
       template: src=templates/pitile.j2 dest=/home/pi/.pitile owner=pi group=pi mode=0644
+    - name: kill possible player instances
+      raw: killall pwomxplayer.bin
     - name: start piwall service
       raw: pwomxplayer --tile-code={{ piwall }} udp://239.0.1.23:1234?buffer_size=6400000B &
