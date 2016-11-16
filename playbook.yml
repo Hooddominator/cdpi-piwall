@@ -13,4 +13,4 @@
     - name: kill possible player instances
       raw: killall pwomxplayer.bin
     - name: start piwall service
-      raw: pwomxplayer --tile-code={{ piwall }} udp://239.0.1.23:1234?buffer_size=6400000B &
+      raw: pwomxplayer --config=4bez udp://239.0.1.23:1234?buffer_size=6400000B &
