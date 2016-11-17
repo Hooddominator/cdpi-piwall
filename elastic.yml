@@ -1,0 +1,8 @@
+---
+- hosts: elastic
+  become: yes
+  tasks:
+    - name: download and install jdk
+      apt: name=openjdk-8-jre-headless state=present
+    - name: download and install elasticsearch
+      apt: deb=https://download.elastic.co/elasticsearch/release/org/elasticsearch/distribution/deb/elasticsearch/2.4.1/elasticsearch-2.4.1.deb
