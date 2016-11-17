@@ -6,3 +6,10 @@
       apt: name=openjdk-8-jre-headless state=present
     - name: download and install elasticsearch
       apt: deb=https://download.elastic.co/elasticsearch/release/org/elasticsearch/distribution/deb/elasticsearch/2.4.1/elasticsearch-2.4.1.deb
+    - name: customize configs
+      lineinfile: dest=/usr/share/elasticsearch/bin/elasticsearch.in.sh regexp=\S+ES_MAX_MEM=1g line=ES_MAX_MEM=512m
+    - file: path=/usr/share/elasticsearch/conf state=directory mode=0755
+    - file: path=/usr/share/elasticsearch/conf/scripts state=directory mode=0755
+    - file: path=/usr/share/elasticsearch/logs state=directory mode=0755
+    - file: path=/usr/share/elasticsearch/data state=directory mode=0777
+    - service: name=elasticsearch state=started
