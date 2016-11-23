@@ -13,7 +13,7 @@
     shell: synergyc {{ synergy }}
     when: synergy != "server"
   - name: notification
-    raw: export DISPLAY=:0;export XAUTHORITY=~pi/.Xauthority;gxmessage "synergy is now up!" -timeout 5
+    shell: export DISPLAY=:0;export XAUTHORITY=~pi/.Xauthority;gxmessage "synergy is now up!" -timeout 5
 #  - name: install supervisor-package
 #    apt: name=supervisor state=present
 #    when: synergy != "server"
