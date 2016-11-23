@@ -10,7 +10,7 @@
     shell: synergys --daemon --config /etc/synergy.conf
     when: synergy == "server"
   - name: start clients
-    shell: synergyc {{ synergy }} --daemon
+    shell: synergyc {{ synergy }}
     when: synergy != "server"
   - name: notification
     raw: export DISPLAY=:0;export XAUTHORITY=~pi/.Xauthority;gxmessage "synergy is now up!" -timeout 5
