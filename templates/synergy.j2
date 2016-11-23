@@ -7,23 +7,38 @@
 #  -------------
 
 section: screens
-        pi4:
-        pi5:
-        pi6:
-        pi7:
+pi4:
+pi5:
+pi6:
+pi7:
+end
+
+section: aliases
+pi4:
+192.168.0.114
+pi5:
+192.168.0.115
+pi6:
+192.168.0.116
+pi7:
+192.168.0.117
 end
 
 section: links
-        pi4:
-                left  = pi5
-                up    = pi7
-        pi5:    
-                right = pi4
-                up    = pi6
-        pi6:     
-                right = pi7
-                down  = pi5
-        pi7:     
-                left  = pi6
-                down  = pi4
+pi4:
+left  = pi5
+up    = pi7
+pi5:    
+right = pi4
+up    = pi6
+pi6:     
+right = pi7
+down  = pi5
+pi7:     
+left  = pi6
+down  = pi4
+end
+
+section: options
+screenSaverSync = true
 end
