@@ -1,0 +1,6 @@
+---
+- hosts: piwall
+  become: true
+  tasks:
+  - name: reboot in a minute
+    at: command="reboot" count=1 units="minutes"
