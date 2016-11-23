@@ -1,22 +1,28 @@
 ---
 - hosts: piwall
+  become: true
   tasks:
   - name: install synergy-package
     apt: name=synergy state=present
   - name: create synergy-config
     template: src=templates/synergy.j2 dest=/etc/synergy.conf owner=pi group=pi mode=0644
   - name: start server
-    raw: synergys
+    shell: synergys --daemon --config /etc/synergy.conf
     when: synergy == "server"
-  - name: install supervisor-package
-    apt: name=supervisor state=present
+  - name: start clients
+    shell: synergyc {{ synergy }} --daemon
     when: synergy != "server"
-  - name: create supervisorconf
-    template: src=templates/synergyc.j2 dest=/etc/supervisor/conf.d/synergyc.conf
-    when: synergy != "server"
-  - name: reread supervisor
-    raw: supervisorctl reread
-    when: synergy != "server"
-  - name: update supervisor
-    raw: supervisorctl update
-    when: synergy != "server"
+  - name: notification
+    raw: export DISPLAY=:0;export XAUTHORITY=~pi/.Xauthority;gxmessage "synergy is now up!" -timeout 5
+#  - name: install supervisor-package
+#    apt: name=supervisor state=present
+#    when: synergy != "server"
+#  - name: create supervisorconf
+#    template: src=templates/synergyc.j2 dest=/etc/supervisor/conf.d/synergyc.conf
+#    when: synergy != "server"
+#  - name: reread supervisor
+#    raw: supervisorctl reread
+#    when: synergy != "server"
+#  - name: update supervisor
+#    raw: supervisorctl update
+#    when: synergy != "server"
