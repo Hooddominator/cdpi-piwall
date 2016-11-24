@@ -8,7 +8,7 @@
     template: src=templates/synergy.j2 dest=/home/pi/synergy.conf owner=pi group=pi mode=0644
     when: synergy == "server"
   - name: start server
-    shell: synergys --daemon --config /etc/synergy.conf
+    shell: synergys
     when: synergy == "server"
   - name: start clients
     shell: synergyc {{ synergy }}
