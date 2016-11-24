@@ -12,8 +12,9 @@
   - name: start clients
     shell: synergyc {{ synergy }}
     when: synergy != "server"
-  - name: notification
-    shell: export DISPLAY=:0;export XAUTHORITY=~pi/.Xauthority;gxmessage "synergy is now up!" -timeout 5
+#  - name: notification
+#    shell: export DISPLAY=:0;export XAUTHORITY=~pi/.Xauthority;gxmessage "synergy is now up!" -timeout 5
+    
 #  - name: install supervisor-package
 #    apt: name=supervisor state=present
 #    when: synergy != "server"
