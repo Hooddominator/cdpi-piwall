@@ -1,0 +1,8 @@
+---
+- hosts: pis
+  become: yes
+  tasks:
+    - name: update and upgrade
+      apt:
+        update_cache: yes
+        upgrade: yes
