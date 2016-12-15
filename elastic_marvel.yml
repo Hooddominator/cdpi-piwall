@@ -1,0 +1,12 @@
+---
+- hosts: pi[2:7]
+  become: yes
+  tasks:
+    - name: install license
+      elasticsearch_plugin:
+        state: present
+        name: license
+    - name: install marvel-agent
+      elasticsearch_plugin:
+        state: present
+        name: marvel-agent
