@@ -1,5 +1,5 @@
 ---
-- hosts: pi[2:7]
+- hosts: elastic
   become: yes
   tasks:
     - name: install license
