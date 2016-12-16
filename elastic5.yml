@@ -1,0 +1,12 @@
+---
+- hosts: elastic
+  become: yes
+  tasks:
+    - name: download and install jdk
+      apt: name=openjdk-8-jre-headless state=present
+    - name: download and install elasticsearch
+      apt: deb=https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.1.1.deb
+    - name: customize jvm-config
+      template: src=templates/jvm.options.j2 dest=/etc/elasticsearch/jvm.options
+    - name: customize es-config
+      template: src=templates/elasticsearch.yml.j2 dest=/etc/elasticsearch/elasticsearch.yml
