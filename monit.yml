@@ -11,5 +11,5 @@
         line: 'set mmonit http://monit:monit@pi8:8080/collector'
     - name: restart service monit
       service:
-        name: httpd
+        name: monit
         state: restarted
