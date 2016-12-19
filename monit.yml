@@ -1,0 +1,15 @@
+---
+- hosts: pis
+  become: yes
+  tasks:
+    - name: download and install monit
+      apt: name=monit state=present
+    - name: setup mmonit-host
+      lineinfile:
+        dest: /etc/monit/monitrc
+        regexp: '^# set mmonit '
+        line: 'set mmonit http://monit:monit@pi8:8080/collector'
+    - name: restart service monit
+      service:
+        name: httpd
+        state: restarted
