@@ -1,5 +1,5 @@
 ---
-- hosts: piwall
+- hosts: pi[5:8]
   become: yes
   vars:
     pwlibsversion: "1.7"
