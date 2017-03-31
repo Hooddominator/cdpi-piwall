@@ -1,5 +1,6 @@
 ---
 - hosts: pi[5:8]
+  remote_user: pi
   become: yes
   vars:
     pwlibsversion: "1.7"
