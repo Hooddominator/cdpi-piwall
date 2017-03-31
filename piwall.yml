@@ -1,5 +1,5 @@
 ---
-- hosts: pi[5:8]
+- hosts: pi5,pi6,pi7,pi8
   remote_user: pi
   become: yes
   vars:
