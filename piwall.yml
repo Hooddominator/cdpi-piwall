@@ -2,8 +2,8 @@
 - hosts: piwall
   become: yes
   vars:
-    pwlibsversion: 1.7
-    pwomxpversion: 20130815
+    pwlibsversion: "1.7"
+    pwomxpversion: "20130815"
   tasks:
     - name: download and install package pwlibs1
       apt: deb=http://dl.piwall.co.uk/pwlibs1_{{ pwlibsversion }}_armhf.deb
@@ -13,7 +13,5 @@
       template: src=templates/piwall.j2 dest=/home/pi/.piwall owner=pi group=pi mode=0644
     - name: create pitile-config
       template: src=templates/pitile.j2 dest=/home/pi/.pitile owner=pi group=pi mode=0644
-    - name: kill possible player instances
-      raw: killall pwomxplayer.bin
-    - name: start piwall service
-      raw: pwomxplayer --config=4bez udp://239.0.1.23:1234?buffer_size=6400000B &
+    - name: configure rc.local for autostart piwall
+      lineinfile: state=present path=/etc/rc.local line='pwomxplayer --config=4bez udp://239.0.1.23:1234?buffer_size=1200000B'
