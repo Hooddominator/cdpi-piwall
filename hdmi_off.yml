@@ -1,0 +1,7 @@
+---
+- hosts: pi5,pi6,pi7,pi8
+  remote_user: pi
+  become: yes
+  tasks:  
+    - name: turn screenz off
+      command: /opt/vc/bin/tvservice -o
