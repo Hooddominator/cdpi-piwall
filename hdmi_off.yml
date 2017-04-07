@@ -2,6 +2,8 @@
 - hosts: pi5,pi6,pi7,pi8
   remote_user: pi
   become: yes
+  vars:
+    display_power: 1
   tasks:  
     - name: turn screenz off
-      command: /opt/vc/bin/tvservice -o
+      command: vcgencmd display_power {{ display_power }}
