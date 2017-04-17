@@ -7,7 +7,7 @@
   - name: setup display
     shell: export DISPLAY=:0
   - name: create synergy-config
-    template: src=templates/synergy.j2 dest=/home/pi/.synergy.conf owner=pi group=pi mode=0644
+    template: src=templates/synergy.j2 dest=/root/.synergy.conf owner=pi group=pi mode=0644
   - name: start server
     shell: synergys
     when: inventory_hostname == "pi8"
