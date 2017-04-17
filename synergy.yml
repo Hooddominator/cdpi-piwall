@@ -11,10 +11,10 @@
     when: synergy == "server"
   - name: start server
     shell: synergys
-    when: synergy == "server"
+    when: inventory_hostname == "pi8"
   - name: start clients
-    shell: synergyc {{ synergy }}
-    when: synergy != "server"
+    shell: synergyc pi8
+    when: inventory_hostname != "pi8"
 #  - name: notification
 #    shell: export DISPLAY=:0;export XAUTHORITY=~pi/.Xauthority;gxmessage "synergy is now up!" -timeout 5
     
