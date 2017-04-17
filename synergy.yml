@@ -1,5 +1,5 @@
 ---
-- hosts: piwall
+- hosts: pi5,pi6,pi7,pi8
   become: true
   tasks:
   - name: install synergy-package
