@@ -1,42 +1,42 @@
 #  piwall synergy configuration file
 #  2x2 desktops
 #  -------------
-#  | pi6 | pi7 |
+#  | pi7 | pi8 |
 #  -------------
-#  | pi5 | pi4 |
+#  | pi6 | pi5 |
 #  -------------
 
 section: screens
-pi4:
 pi5:
 pi6:
 pi7:
+pi8:
 end
 
 section: aliases
-pi4:
-192.168.0.114
 pi5:
 192.168.0.115
 pi6:
 192.168.0.116
 pi7:
 192.168.0.117
+pi8:
+192.168.0.118
 end
 
 section: links
-pi4:
-left  = pi5
-up    = pi7
-pi5:    
-right = pi4
-up    = pi6
-pi6:     
-right = pi7
-down  = pi5
-pi7:     
+pi5:
 left  = pi6
-down  = pi4
+up    = pi8
+pi6:    
+right = pi5
+up    = pi7
+pi7:     
+right = pi8
+down  = pi6
+pi8:     
+left  = pi7
+down  = pi5
 end
 
 section: options
