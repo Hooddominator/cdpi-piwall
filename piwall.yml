@@ -14,5 +14,14 @@
       template: src=templates/piwall.j2 dest=/home/pi/.piwall owner=pi group=pi mode=0644
     - name: create pitile-config
       template: src=templates/pitile.j2 dest=/home/pi/.pitile owner=pi group=pi mode=0644
+    - name: symlink piwall-config
+      file:
+        src:/home/pi/{{ item }}
+        dest:/root/{{ item }}
+        state:link
+      with-items:
+        - .piwall
+        - .pitile
+    - name: symlink piwall-config
     - name: configure rc.local for autostart piwall
       lineinfile: state=present insertbefore='^exit 0' dest=/etc/rc.local line='pwomxplayer --config=qw udp://239.0.1.23:1234?buffer_size=1200000B &'
